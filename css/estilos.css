@@ -1,0 +1,132 @@
+/* GERAL */
+body {
+    margin: 0;
+    padding: 0;
+    background: #eee;
+    color: #222;
+    font-family: 'Hevetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 10px;
+    line-height: 1;
+}
+p {
+    margin: 0 0 15px;
+}
+a,
+a:visited {
+    color: #08c;
+}
+
+#tudo {
+    position: relative;
+    width: 960px;
+    margin: 40px auto 0;
+    padding: 20px;
+}
+
+/**
+ * Esse é o efeito do papel que aparece nos browsers mais novos, como o Google Chrome.
+ * Não se preocupem em entender o que ele faz, nem eu sei direito hehe.
+ */
+#tudo,
+#tudo:before,
+#tudo:after {
+    background: #fff;
+    border: solid 1px #ddd;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1),
+                1px 1px 3px rgba(0,0,0,0.2);
+}
+#tudo:before,
+#tudo:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotateZ(2.5deg);
+    -o-transform: rotate(2.5deg);
+    transform: rotateZ(2.5deg);
+    z-index: -1;
+}
+#tudo:after {
+    -webkit-transform: rotateZ(-2.5deg);
+    -o-transform: rotate(-2.5deg);
+    transform: rotateZ(-2.5deg);
+}
+
+/* CABEÇALHO */
+#cabecalho {
+    padding: 10px 0 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+#logo {
+    float: left;
+    margin: 0 0 15px;
+}
+#logo h1 {
+    margin: 0 0 10px;
+}
+#logo a {
+    color: #222;
+    text-decoration: none;
+}
+#subtitulo {
+    font-family: Georgia, serif;
+    font-style: italic;
+    margin: 0;
+}
+#menu {
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+#menu li {
+    display: inline;
+    margin: 0 4px;
+}
+
+/* CONTEÚDO */
+#meio {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+#conteudo {
+    float: right;
+    width: 780px;
+}
+/* BARRA LATERAL */
+#sidebar {
+    float: left;
+    width: 150px;
+    /*border: solid 1px red;*/
+}
+.sidebar-box {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.sidebar-box-titulo {
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+.sidebar-box-lista {
+    margin: 0;
+    padding: 0;
+}
+
+/* RODAPÉ */
+#rodape {
+    font-size: 11px;
+}
+#rodape p {
+    margin: 0;
+}
