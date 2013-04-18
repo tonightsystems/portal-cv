@@ -94,6 +94,10 @@ a:visited {
     display: inline;
     margin: 0 10px;
 }
+#menu li.selecionado a {
+    color: #222;
+    text-decoration: none;
+}
 
 /* CONTEÚDO */
 #meio {
