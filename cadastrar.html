@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Portal CV</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script type="text/javascript" src="js/scripts.js"></script>
+</head>
+<body>
+    <div id="tudo">
+        <!-- CABEÇALHO -->
+        <header id="cabecalho">
+            <!-- LOGO -->
+            <div id="logo">
+                <h1><a href="index.html" title="Página Inicial">Portal CV</a></h1>
+                <p id="subtitulo">Seu currículo no lugar certo.</p>
+            </div>
+            <!-- MENU -->
+            <ul id="menu">
+                <li class=""><a href="index.html">Home</a></li>
+                <li class=""><a href="login.html">Login</a></li>
+                <li class="selecionado"><a href="cadastrar.html">Cadastrar currículo</a></li>
+                <li class=""><a href="lista.html">Lista de currículos</a></li>
+            </ul>
+        </header>
+        <!-- CONTEÚDO PRINCIPAL -->
+        <div id="meio">
+            <div id="sidebar">
+                <div class="sidebar-box">
+                    <h2 class="sidebar-box-titulo">Áreas de interesse</h2>
+                    <ul class="sidebar-box-lista">
+                        <li><a href="#">Análise de Sistemas</a></li>
+                        <li><a href="#">Back-end</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Front-End</a></li>
+                        <li><a href="#">Interfaces</a></li>
+                        <li><a href="#">Redes</a></li>
+                        <li><a href="#">Segurança</a></li>
+                        <li><a href="#">UX</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="conteudo">
+                <h1>Cadastre seu currículo</h1>
+                <form action="listar.html" method="post" id="cadastrar" onsubmit="validar(event, this)">
+                    <table>
+                        <tr>
+                            <td><label for="i-nome">Nome:</label></td>
+                            <td><input type="text" name="nome" title="Nome" class="input"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="i-curriculo">Currículo</label></td>
+                            <td><input type="file" class="input" title="Currículo"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Cadstrar"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <!-- RODAPE -->
+        <footer id="rodape">
+            <p>&copy; UNA 2013 &mdash; Desenvolvido por: Aline Morais, Daniel, Felipe Azevedo, Gabriel Izaias, Rômulo Barbosa e Thiago Alex.</p>
+        </footer>
+    </div>
+</body>
+</html>
