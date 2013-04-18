@@ -24,6 +24,19 @@ a,
 a:visited {
     color: #08c;
 }
+label {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* Formulários */
+.input {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+}
 
 #tudo {
     position: relative;
@@ -87,12 +100,16 @@ a:visited {
 }
 #menu {
     float: right;
-    margin: 0;
+    margin: 15px;
     padding: 0;
 }
 #menu li {
     display: inline;
-    margin: 0 4px;
+    margin: 0 10px;
+}
+#menu li.selecionado a {
+    color: #222;
+    text-decoration: none;
 }
 
 /* CONTEÚDO */
@@ -104,6 +121,41 @@ a:visited {
     float: right;
     width: 780px;
 }
+
+.lista {
+    width: 100%;
+    border: 1px solid #ccc;
+}
+.lista thead th {
+    border-bottom: 1px solid #ccc;
+    background: #f6f6f6;
+}
+.lista th {
+    padding: 5px;
+    text-align: left;
+}
+.lista td {
+    padding: 5px;
+    vertical-align: middle;
+
+}
+.lista .col-cv {
+    text-align: center;
+    width: 100px;
+}
+.lista .col-areas {
+    font-size: 13px;
+    width: 140px;
+}
+.lista .col-data {
+    text-align: center;
+    /*font-size: 13px;*/
+    width: 70px;
+}
+.lista tbody tr:nth-of-type(odd) td {
+    background: #f9f9f9;
+}
+
 /* BARRA LATERAL */
 #sidebar {
     float: left;
