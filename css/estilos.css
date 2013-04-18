@@ -87,12 +87,12 @@ a:visited {
 }
 #menu {
     float: right;
-    margin: 0;
+    margin: 15px;
     padding: 0;
 }
 #menu li {
     display: inline;
-    margin: 0 4px;
+    margin: 0 10px;
 }
 
 /* CONTEÚDO */
