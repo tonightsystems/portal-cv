@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Portal CV</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <script type="text/javascript" src="js/scripts.js"></script>
 </head>
 <body>
     <div id="tudo">
@@ -18,7 +19,6 @@
             <ul id="menu">
                 <li class=""><a href="index.html">Home</a></li>
                 <li class="selecionado"><a href="login.html">Login</a></li>
-                <li class=""><a href="cadastrar.html">Cadastrar currículo</a></li>
                 <li class=""><a href="lista.html">Lista de currículos</a></li>
             </ul>
         </header>
@@ -42,7 +42,7 @@
             <div id="conteudo">
                 <h1>Login</h1>
                 <p>Acesse o sistema do Portal CV, cadastre seu currículo e suas áreas de interesse e em breve alguma oportunidade vai encontrar você!</p>
-                <form action="painel.html" id="login" method="post">
+                <form action="cadastrar.html" id="login" method="post" onsubmit="validar(event, this)">
                     <table>
                         <tr>
                             <td><label for="i-email">E-mail</label></td>
@@ -65,6 +65,5 @@
             <p>&copy; UNA 2013 &mdash; Desenvolvido por: Aline Morais, Daniel, Felipe Azevedo, Gabriel Izaias, Rômulo Barbosa e Thiago Alex.</p>
         </footer>
     </div>
-    <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>
