@@ -122,6 +122,40 @@ label {
     width: 780px;
 }
 
+.lista {
+    width: 100%;
+    border: 1px solid #ccc;
+}
+.lista thead th {
+    border-bottom: 1px solid #ccc;
+    background: #f6f6f6;
+}
+.lista th {
+    padding: 5px;
+    text-align: left;
+}
+.lista td {
+    padding: 5px;
+    vertical-align: middle;
+
+}
+.lista .col-cv {
+    text-align: center;
+    width: 100px;
+}
+.lista .col-areas {
+    font-size: 13px;
+    width: 140px;
+}
+.lista .col-data {
+    text-align: center;
+    /*font-size: 13px;*/
+    width: 70px;
+}
+.lista tbody tr:nth-of-type(odd) td {
+    background: #f9f9f9;
+}
+
 /* BARRA LATERAL */
 #sidebar {
     float: left;
