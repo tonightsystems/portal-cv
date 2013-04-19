@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Portal CV</title>
     <link rel="stylesheet" href="css/estilos.css">
-    <script type="text/javascript" src="js/scripts.js"></script>
 </head>
 <body>
     <div id="tudo">
@@ -18,7 +17,7 @@
             <!-- MENU -->
             <ul id="menu">
                 <li class=""><a href="index.html">Home</a></li>
-                <li class="selecionado"><a href="login.html">Login</a></li>
+                <li class=""><a href="login.html">Login</a></li>
                 <li class=""><a href="cadastrar.html">Cadastrar</a></li>
             </ul>
         </header>
@@ -53,24 +52,55 @@
                 </div>
             </div>
             <div id="conteudo">
-                <h1>Login</h1>
-                <p>Acesse o sistema do Portal CV, cadastre seu currículo e suas áreas de interesse e em breve alguma oportunidade vai encontrar você!</p>
-                <form action="perfil.html" id="login" method="post" onsubmit="validar(event, this)">
-                    <table>
+                <h1>Lista dos currículos da região de "SP"</h1>
+                <table class="lista">
+                    <thead>
                         <tr>
-                            <td><label for="i-email">E-mail</label></td>
-                            <td><input type="text" name="email" id="i-email" title="E-mail" class="input"></td>
+                            <th class="col-nome">Nome</th>
+                            <th class="col-cv">Currículo</th>
+                            <!-- <th class="col-areas">Áreas de interesse</th> -->
+                            <th class="col-data">Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-nome">Luiz Inácio da Silva</td>
+                            <td class="col-cv"><a href="#">Download</a></td>
+                            <!-- <td class="col-areas">Back-end</td> -->
+                            <td class="col-data">12/03/2013</td>
                         </tr>
                         <tr>
-                            <td><label for="i-senha">Senha</label></td>
-                            <td><input type="password" name="senha" id="i-senha" title="Senha" class="input"></td>
+                            <td class="col-nome">Ronaldo Luís Nazário de Lima</td>
+                            <td class="col-cv"><a href="#">Download</a></td>
+                            <!-- <td class="col-areas">UX, Intefaces, Design</td> -->
+                            <td class="col-data">12/03/2013</td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td>
-                            <td><input type="submit" value="Login"></td>
+                            <td class="col-nome">Obi-Wan Kenobi</td>
+                            <td class="col-cv"><a href="#">Download</a></td>
+                            <!-- <td class="col-areas">Design, Redes, Análise de Sistemas</td> -->
+                            <td class="col-data">12/03/2013</td>
                         </tr>
-                    </table>
-                </form>
+                        <tr>
+                            <td class="col-nome">Thórin Oakenshield</td>
+                            <td class="col-cv"><a href="#">Download</a></td>
+                            <!-- <td class="col-areas">Design, Front-end, Infra-estrutura</td> -->
+                            <td class="col-data">12/03/2013</td>
+                        </tr>
+                        <tr>
+                            <td class="col-nome">Pedro de Lara</td>
+                            <td class="col-cv"><a href="#">Download</a></td>
+                            <!-- <td class="col-areas">Design, UX</td> -->
+                            <td class="col-data">12/03/2013</td>
+                        </tr>
+                        <tr>
+                            <td class="col-nome">Tony Stark</td>
+                            <td class="col-cv"><a href="#">Download</a></td>
+                            <!-- <td class="col-areas">Redes, Segurança</td> -->
+                            <td class="col-data">12/03/2013</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <!-- RODAPE -->
@@ -78,5 +108,6 @@
             <p>&copy; UNA 2013 &mdash; Desenvolvido por: Aline Morais, Daniel, Felipe Azevedo, Gabriel Izaias, Rômulo Barbosa e Thiago Alex.</p>
         </footer>
     </div>
+    <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>
