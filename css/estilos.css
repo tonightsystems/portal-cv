@@ -155,6 +155,19 @@ label {
 .lista tbody tr:nth-of-type(odd) td {
     background: #f9f9f9;
 }
+.col-label {
+    width: 80px;
+}
+.lista-areas {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+}
+.lista-areas li {
+    width: 48%;
+    float: left;
+}
 
 /* BARRA LATERAL */
 #sidebar {
