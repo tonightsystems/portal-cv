@@ -9,69 +9,33 @@
 <body>
     <div id="tudo">
         <!-- CABEÇALHO -->
-        <header id="cabecalho">
-            <!-- LOGO -->
-            <div id="logo">
-                <h1><a href="index.html" title="Página Inicial">Portal CV</a></h1>
-                <p id="subtitulo">Seu currículo no lugar certo.</p>
-            </div>
-            <!-- MENU -->
-            <ul id="menu">
-                <li class=""><a href="index.html">Home</a></li>
-                <li class=""><a href="login.html">Login</a></li>
-                <li class="selecionado"><a href="cadastrar.html">Cadastrar</a></li>
-
-            </ul>
-        </header>
+        <?php include ("cabecalho.html"); ?>
+		
         <!-- CONTEÚDO PRINCIPAL -->
         <div id="meio">
-            <div id="sidebar">
-                <div class="sidebar-box">
-                    <h2 class="sidebar-box-titulo">Áreas de interesse</h2>
-                    <ul class="sidebar-box-lista">
-                        <li><a href="lista-area.html">Análise de Sistemas</a></li>
-                        <li><a href="lista-area.html">Back-end</a></li>
-                        <li><a href="lista-area.html">Design</a></li>
-                        <li><a href="lista-area.html">Front-End</a></li>
-                        <li><a href="lista-area.html">Interfaces</a></li>
-                        <li><a href="lista-area.html">Redes</a></li>
-                        <li><a href="lista-area.html">Segurança</a></li>
-                        <li><a href="lista-area.html">UX</a></li>
-                    </ul>
-                </div>
-                <div class="sidebar-box">
-                    <h2 class="sidebar-box-titulo">Regiões</h2>
-                    <ul class="sidebar-box-lista">
-                        <li><a href="lista-regiao.html">MG</a></li>
-                        <li><a href="lista-regiao.html">SP</a></li>
-                        <li><a href="lista-regiao.html">RJ</a></li>
-                        <li><a href="lista-regiao.html">RS</a></li>
-                        <li><a href="lista-regiao.html">PI</a></li>
-                        <li><a href="lista-regiao.html">MA</a></li>
-                        <li><a href="lista-regiao.html">AM</a></li>
-                        <li><a href="lista-regiao.html">TO</a></li>
-                    </ul>
-                </div>
-            </div>
+            
+			<!-- MENU LATERAL -->
+			<?php include ("menu-lateral.html"); ?>
+			
             <div id="conteudo">
-                <h1>Cadastre-se</h1>
+                <h1>Seu Perfil</h1>
                 <form action="listar.html" method="post" id="cadastrar" onsubmit="validar(event, this)">
                     <table>
                         <tr>
                             <td class="col-label"><label for="i-nome">Nome:</label></td>
-                            <td class="col-input"><input type="text" name="nome" title="Nome" class="input"></td>
+                            <td class="col-input"><input type="text" name="nome" title="Nome" class="input" value="Fulano de Tal"></td>
                         </tr>
                         <tr>
                             <td><label for="i-email">E-mail:</label></td>
-                            <td><input type="text" name="email" title="E-mail" class="input"></td>
+                            <td><input type="text" name="email" title="E-mail" class="input" value="fulano@gmail.com"></td>
                         </tr>
                         <tr>
                             <td><label for="i-cidade">Cidade:</label></td>
-                            <td><input type="text" name="cidade" title="Cidade" class="input"></td>
+                            <td><input type="text" name="cidade" title="Cidade" class="input" value="Belo Horizonte"></td>
                         </tr>
                         <tr>
                             <td><label for="i-estado">Estado:</label></td>
-                            <td><input type="text" name="estado" title="Estado" class="input"></td>
+                            <td><input type="text" name="estado" title="Estado" class="input" value="MG"></td>
                         </tr>
                         <tr>
                             <td><label for="i-curriculo">Currículo</label></td>
@@ -102,16 +66,16 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="submit" value="Cadastrar"></td>
+                            <td><input type="submit" value="Cadstrar"></td>
                         </tr>
                     </table>
                 </form>
             </div>
         </div>
+		
         <!-- RODAPE -->
-        <footer id="rodape">
-            <p>&copy; UNA 2013 &mdash; Desenvolvido por: Aline Morais, Daniel, Felipe Azevedo, Gabriel Izaias, Rômulo Barbosa e Thiago Alex.</p>
-        </footer>
+        <?php include ("rodape.html"); ?>
+		
     </div>
 </body>
 </html>

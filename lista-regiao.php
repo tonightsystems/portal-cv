@@ -8,51 +8,16 @@
 <body>
     <div id="tudo">
         <!-- CABEÇALHO -->
-        <header id="cabecalho">
-            <!-- LOGO -->
-            <div id="logo">
-                <h1><a href="index.html" title="Página Inicial">Portal CV</a></h1>
-                <p id="subtitulo">Seu currículo no lugar certo.</p>
-            </div>
-            <!-- MENU -->
-            <ul id="menu">
-                <li class=""><a href="index.html">Home</a></li>
-                <li class=""><a href="login.html">Login</a></li>
-                <li class=""><a href="cadastrar.html">Cadastrar</a></li>
-            </ul>
-        </header>
+        <?php include ("cabecalho.html"); ?>
+		
         <!-- CONTEÚDO PRINCIPAL -->
         <div id="meio">
-            <div id="sidebar">
-                <div class="sidebar-box">
-                    <h2 class="sidebar-box-titulo">Áreas de interesse</h2>
-                    <ul class="sidebar-box-lista">
-                        <li><a href="lista-area.html">Análise de Sistemas</a></li>
-                        <li><a href="lista-area.html">Back-end</a></li>
-                        <li><a href="lista-area.html">Design</a></li>
-                        <li><a href="lista-area.html">Front-End</a></li>
-                        <li><a href="lista-area.html">Interfaces</a></li>
-                        <li><a href="lista-area.html">Redes</a></li>
-                        <li><a href="lista-area.html">Segurança</a></li>
-                        <li><a href="lista-area.html">UX</a></li>
-                    </ul>
-                </div>
-                <div class="sidebar-box">
-                    <h2 class="sidebar-box-titulo">Regiões</h2>
-                    <ul class="sidebar-box-lista">
-                        <li><a href="lista-regiao.html">MG</a></li>
-                        <li><a href="lista-regiao.html">SP</a></li>
-                        <li><a href="lista-regiao.html">RJ</a></li>
-                        <li><a href="lista-regiao.html">RS</a></li>
-                        <li><a href="lista-regiao.html">PI</a></li>
-                        <li><a href="lista-regiao.html">MA</a></li>
-                        <li><a href="lista-regiao.html">AM</a></li>
-                        <li><a href="lista-regiao.html">TO</a></li>
-                    </ul>
-                </div>
-            </div>
+            
+			<!-- MENU LATERAL -->
+			<?php include ("menu-lateral.html"); ?>
+			
             <div id="conteudo">
-                <h1>Lista dos currículos da área de "Redes"</h1>
+                <h1>Lista dos currículos da região de "SP"</h1>
                 <table class="lista">
                     <thead>
                         <tr>
@@ -103,10 +68,10 @@
                 </table>
             </div>
         </div>
+		
         <!-- RODAPE -->
-        <footer id="rodape">
-            <p>&copy; UNA 2013 &mdash; Desenvolvido por: Aline Morais, Daniel, Felipe Azevedo, Gabriel Izaias, Rômulo Barbosa e Thiago Alex.</p>
-        </footer>
+        <?php include ("rodape.html"); ?>
+		
     </div>
     <script type="text/javascript" src="js/scripts.js"></script>
 </body>
