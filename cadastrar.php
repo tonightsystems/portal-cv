@@ -19,7 +19,7 @@
 			
             <div id="conteudo">
                 <h1>Cadastre-se</h1>
-                <form action="config/conexao.php" method="post" id="cadastrar" onsubmit="validar(event, this)">
+                <form action="config/sql.php" method="post" id="cadastrar" onsubmit="validar(event, this)">
                     <table>
 						<!-- DADOS BASICOS -->
                         <tr>
