@@ -38,7 +38,7 @@
                             <td><label for="i-email">E-mail:</label></td>
                             <td><input type="text" name="email" title="E-mail" class="input"></td>
                         </tr>
-						
+						<!--
 						<tr>
                             <td><label for="i-estado">Estado:</label></td>
 							<select>
@@ -48,7 +48,7 @@
 								<?php } ?>
 							</select>
 						</tr>	
-						<!--
+						
                         <tr>
                             <td><label for="i-estado">Estado:</label></td>
                             <td><input type="text" name="estado" title="Estado" class="input"></td>
