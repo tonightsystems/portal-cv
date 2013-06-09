@@ -1,3 +1,10 @@
+<?php
+	require './config/conexao.php';
+
+	// cria a query e envia ela ao BD
+	//$query = mysql_query("select id_estado, nome from `estado`", $con);
+?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -38,17 +45,30 @@
                             <td><label for="i-email">E-mail:</label></td>
                             <td><input type="text" name="email" title="E-mail" class="input"></td>
                         </tr>
-						<!--
+						
 						<tr>
                             <td><label for="i-estado">Estado:</label></td>
-							<select>
-								<option>Selecione...</option>
-								<?php while($teste = mysql_fetch_array($query2)) { ?>
-									<option value="<?php echo $teste['descricao'] ?></option>
-								<?php } ?>
+							<td>
+								<select name="estado">
+									<option>Selecione...</option>
+									
+									<?php 
+									
+										$sql = "select id_estado, nome from `estado`"; // cria a query
+										$result = mysql_query($sql) or die ("ERRO SQL:".mysql_error()); // envia a query ao BD, imprime erro se houver
+												
+										while($estado = mysql_fetch_array($result)){ // pega os dados retornados pela query 
+									?> 
+										
+											<option value="<?php echo $estado['id_estado'] ?>"> <!-- mostra os dados em forma de options -->
+												<?php echo $estado['nome'] ?>
+											</option>
+										<?php } ?>
 							</select>
+							</td>
 						</tr>	
 						
+						<!--
                         <tr>
                             <td><label for="i-estado">Estado:</label></td>
                             <td><input type="text" name="estado" title="Estado" class="input"></td>

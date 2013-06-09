@@ -1,6 +1,6 @@
 <?php
 
-$con = mysql_connect("localhost", "root", "");
+$con = mysql_connect("localhost", "root", "root");
 if(!$con){
 	echo("Erro na conexao com o servidor MySQL!");
 }
