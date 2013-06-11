@@ -1,8 +1,5 @@
 <?php
 	require './config/conexao.php';
-
-	// cria a query e envia ela ao BD
-	//$query = mysql_query("select id_estado, nome from `estado`", $con);
 ?>
 
 <!doctype html>
@@ -26,7 +23,7 @@
 			
             <div id="conteudo">
                 <h1>Cadastre-se</h1>
-                <form action="config/sql.php" method="post" id="cadastrar" onsubmit="validar(event, this)">
+                <form action="config/sql.php" method="post" id="cadastrar" onsubmit="validar(event, this)" enctype="multipart/form-data">
                     <table>
 						<!-- DADOS BASICOS -->
                         <tr>
@@ -64,21 +61,16 @@
 												<?php echo $estado['nome'] ?>
 											</option>
 										<?php } ?>
-							</select>
+								</select>
 							</td>
 						</tr>	
 						
-						<!--
-                        <tr>
-                            <td><label for="i-estado">Estado:</label></td>
-                            <td><input type="text" name="estado" title="Estado" class="input"></td>
-                        </tr> 
-						
                         <tr>
                             <td><label for="i-foto">Foto:</label></td>
-                            <td><input type="file" title="Foto" class="input"></td>
+                            <td><input type="file" name="foto" title="Foto" class="input"></td>
                         </tr>
-
+						
+						<!--
                         <tr>
                             <td><label for="i-minicurriculo">Minicurrículo:</label></td>
 							<td><textarea name="minicurriculo" cols="25" rows="7" class="input" title="Minicurrículo"></textarea></td>
@@ -142,7 +134,7 @@
                         </tr>-->
                         <tr>
                             <td></td>
-                            <td><input type="submit" value="Cadastrar"></td>
+                            <td><input type="submit" name="cadastrar" value="Cadastrar"></td>
 							<td><input type="reset" value="Limpar"></td>
                         </tr>
                     </table>
