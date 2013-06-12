@@ -9,6 +9,11 @@ $celular= $_POST["celular"];
 $email= $_POST["email"];
 $id_estado= $_POST["estado"];
 $foto= $_FILES['foto'];
+$empresa= $_POST["empresa"];
+$funcao= $_POST["funcao"];
+$dta_entrada= $_POST["dta_entrada"];
+$dta_saida= $_POST["dta_saida"];
+$atividades= $_POST["ativ_exercidas"];
 
 
 // RESPONSAVEL PELO CADASTRO DE CANDIDATOS
@@ -67,6 +72,9 @@ $foto= $_FILES['foto'];
 	$query = "INSERT INTO `candidato` (`nome` , `telefone`, `celular`, `email`, `id_estado`, `foto`) 
 	VALUES ('$nome', '$telefone', '$celular', '$email', '$id_estado', '$foto')";
 
+	$query2 = "INSERT INTO `experiencia_profissional` (`empresa` , `funcao`, `dta_entrada`, `dta_saida`, `atividades`, `id_candidato`) 
+	VALUES ('$empresa', '$funcao', '$dta_entrada', '$dta_saida', '$atividades', '$id_candidato')";
+	
 	if(mysql_query($query,$con)) {
 		echo "Seu cadastro foi realizado com sucesso! Agradecemos a atenção."; 
 	} else {

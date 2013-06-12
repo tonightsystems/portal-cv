@@ -1,5 +1,110 @@
 <?php
-	require './config/conexao.php';
+
+session_start(); // iniciar a session
+
+require './config/conexao.php';
+
+
+if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efetua as ações
+
+	cadastroCurriculo($con);
+	retornoID($con);
+	header("Location: cad_curriculo2.php");
+	
+}
+
+// FUNCAO RESPONSAVEL POR REALIZAR O CADASTRO DE CANDIDATOS
+
+function cadastroCurriculo($con){ 
+		
+	// armazena os dados do formulário
+	$nome= $_POST["nome"];
+	$telefone= $_POST["telefone"];
+	$celular= $_POST["celular"];
+	$email= $_POST["email"];
+	$id_estado= $_POST["estado"];
+	$foto= $_FILES['foto'];
+		
+	uploadFoto($foto);
+		
+	// query que realiza a inserção dos dados no banco de dados na tabela candidatos
+	$query = "INSERT INTO `candidato` (`nome` , `telefone`, `celular`, `email`, `id_estado`, `foto`) 
+	VALUES ('$nome', '$telefone', '$celular', '$email', '$id_estado', '$foto')";
+	
+	if(!mysql_query($query,$con)) {
+		echo "Erro na sequencia SQL!";
+	}	
+		
+} 
+
+
+// FUNCAO RESPONSAVEL POR REALIZAR O UPLOAD DE IMAGENS
+	
+function uploadFoto($foto){
+
+	// Se a foto estiver sido selecionada
+	if (!empty($foto["name"])) {
+	
+		$error = array();
+	
+		// Largura máxima em pixels
+		$largura = 1500;
+		// Altura máxima em pixels
+		$altura = 1800;
+		// Tamanho máximo do arquivo em bytes
+		$tamanho = 10000000;
+		
+		// Verifica se o arquivo é uma imagem
+		if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])){
+			$error[1] = "Arquivo em formato inválido! A imagem deve ser jpg, jpeg, bmp, gif ou png. Envie outro arquivo.";
+		} 
+		
+		// Pega as dimensões da imagem
+		$dimensoes = getimagesize($foto["tmp_name"]);
+		
+		// Verifica se o tamanho da imagem é maior que o tamanho permitido
+		if($foto["size"] > $tamanho) {
+			$error[4] = "A imagem deve ter no máximo ".$tamanho." bytes";
+		}
+	
+		// Se não houver nenhum erro
+		if (count($error) == 0) {
+ 
+			// Pega extensão da imagem
+			preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext);
+ 
+			// Gera um nome único para a imagem
+			$nome_imagem = md5(uniqid(time())) . "." . $ext[1];
+			
+			// Caminho de onde ficará a imagem
+			$caminho_imagem = "./fotos-candidatos/" . $nome_imagem;
+ 
+			// Faz o upload da imagem para seu respectivo caminho
+			move_uploaded_file($foto["tmp_name"], $caminho_imagem);
+	
+		}
+	
+		// Se houver mensagens de erro, exibe-as
+		if (count($error) != 0) {
+			foreach ($error as $erro) {
+				echo $erro . "<br />";
+			}
+		}
+	}
+} 
+
+
+// FUNCAO RESPONSAVEL POR RETORNAR O ÚLTIMO ID_CANDIDATO INSERIDO NO BD
+
+function retornoID($con){
+
+    $id_candidato = mysql_insert_id($con);
+    
+    $_SESSION['id_candidato'] = $id_candidato;
+	echo "pagina 1:". $_SESSION['id_candidato']; 
+  
+}
+
 ?>
 
 <!doctype html>
@@ -22,10 +127,16 @@
 			<?php include ("menu-lateral.html"); ?>
 			
             <div id="conteudo">
-                <h1>Cadastre-se</h1>
-                <form action="config/sql.php" method="post" id="cadastrar" onsubmit="validar(event, this)" enctype="multipart/form-data">
-                    <table>
+                <h1>Cadastre-se</h1><br />
+                <form action="cad_curriculo.php" method="post" id="cadastrar" onsubmit="validar(event, this)" enctype="multipart/form-data">
+                    <table align="center">
+					
 						<!-- DADOS BASICOS -->
+						<tr>
+							<td colspan=2>
+								<center><h3> Dados Básicos </h3></center>
+							</td>
+						</tr>
                         <tr>
                             <td class="col-label"><label for="i-nome">Nome:</label></td>
                             <td class="col-input"><input type="text" name="nome" title="Nome" class="input"></td>
@@ -74,29 +185,7 @@
                         <tr>
                             <td><label for="i-minicurriculo">Minicurrículo:</label></td>
 							<td><textarea name="minicurriculo" cols="25" rows="7" class="input" title="Minicurrículo"></textarea></td>
-                        </tr>		-->
-						
-						<!-- EXPERIENCIA PROFISSIONAL --><!-- 
-                        <tr>
-                            <td><label for="i-empresa">Empresa:</label></td>
-                            <td><input type="text" name="empresa" title="Empresa" class="input"></td>
-                        </tr>			
-                        <tr>
-                            <td><label for="i-funcao">Função:</label></td>
-                            <td><input type="text" name="funcao" title="Função" class="input"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="i-dtaEntrada">Data Entrada:</label></td>
-                            <td><input type="text" name="dtaEntrada" title="Data de Entrada" class="input"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="i-dtaSaida">Data Saída:</label></td>
-                            <td><input type="text" name="dtaSaida" title="Data de Saída" class="input"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="i-ativExercida">Atividades Exercidas:</label></td>
-							<td><textarea name="ativExercida" cols="25" rows="7" title="Atividades Exercidas" class="input"></textarea></td>
-                        </tr>	
+                        </tr>		--><!--
 						
 				        <tr>
                             <td><label for="i-idioma">Idiomas:</label></td>
@@ -134,8 +223,10 @@
                         </tr>-->
                         <tr>
                             <td></td>
-                            <td><input type="submit" name="cadastrar" value="Cadastrar"></td>
-							<td><input type="reset" value="Limpar"></td>
+                            <td>
+								<input type="reset" value="Limpar">
+								<input type="submit" name="cadastrar" value="Cadastrar">
+							</td>
                         </tr>
                     </table>
                 </form>
