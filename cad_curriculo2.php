@@ -10,7 +10,14 @@ require './config/conexao.php';
 if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efetua as ações
 
 	cadastroExperiencia($con, $id_candidato);
-//	header("Location: cad_curriculo2.php");
+	header("Location: cad_curriculo3.php");
+	
+}
+
+if(isset($_POST['cad_experiencia'])) { 
+
+	cadastroExperiencia($con, $id_candidato);
+	header("Location: cad_curriculo2.php");
 	
 }
 
@@ -59,13 +66,14 @@ function cadastroExperiencia($con, $id_candidato){
 			
             <div id="conteudo">
                 <h1>Cadastre-se</h1><br />
-                <form action="cad_curriculo2.php" method="post" id="cadastrar" onsubmit="validar(event, this)" enctype="multipart/form-data">
+                <form action="cad_curriculo2.php" method="post" id="cadastrar" onsubmit="validar(event, this)">
                     <table align="center">
 					
 						<!-- EXPERIENCIA PROFISSIONAL -->
 						<tr>
 							<td colspan=2>
-								<center><h3> Experiência Profissional </h3></center>
+								<h3> Experiência Profissional </h3>
+								<hr>
 							</td>
 						</tr>
                         <tr>
@@ -89,11 +97,12 @@ function cadastroExperiencia($con, $id_candidato){
 							<td><textarea name="ativ_exercidas" cols="25" rows="7" title="Atividades Exercidas" class="input"></textarea></td>
                         </tr>
                         <tr>
-                            <td></td>
                             <td>
+								<input type="submit" name="cad_experiencia" value="Nova Experiência">
+							</td>
+                            <td><br />
 								<input type="reset" value="Limpar">
-					<!--			<input type="submit" name="cad_experiencia" value="Nova Experiência"> -->
-								<input type="submit" name="cadastrar" value="Cadastrar">
+								<input type="submit" name="cadastrar" value="Seguir com Cadastro >>">
 							</td>
                         </tr>
                     </table>

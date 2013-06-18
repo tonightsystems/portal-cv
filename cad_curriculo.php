@@ -8,6 +8,19 @@ require './config/conexao.php';
 if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efetua as ações
 
 	cadastroCurriculo($con);
+	
+/*
+	// Verifica se alguma area foi selecionada 
+    if(isset($_POST["area"])) {// Faz um loop no Array de checkbox
+            
+        for($i = 0; $i < count($_POST["area"]); $i++) {  // A função count retorna a quantidade de checkbox selecionado
+            echo "A area ".$_POST["area"][$i]." foi selecionada!<br />";
+        }
+    } else {
+        echo "Nenhuma area foi selecionada!";
+    }	
+*/
+	
 	retornoID($con);
 	header("Location: cad_curriculo2.php");
 	
@@ -24,17 +37,18 @@ function cadastroCurriculo($con){
 	$email= $_POST["email"];
 	$id_estado= $_POST["estado"];
 	$foto= $_FILES['foto'];
+	$area= $_POST["area"];
 		
 	uploadFoto($foto);
 		
 	// query que realiza a inserção dos dados no banco de dados na tabela candidatos
-	$query = "INSERT INTO `candidato` (`nome` , `telefone`, `celular`, `email`, `id_estado`, `foto`) 
-	VALUES ('$nome', '$telefone', '$celular', '$email', '$id_estado', '$foto')";
+	$query = "INSERT INTO `candidato` (`nome` , `telefone`, `celular`, `email`, `id_estado`, `foto`, `areas_interesse`) 
+	VALUES ('$nome', '$telefone', '$celular', '$email', '$id_estado', '$foto', '$area')";
 	
 	if(!mysql_query($query,$con)) {
 		echo "Erro na sequencia SQL!";
-	}	
-		
+	}
+	
 } 
 
 
@@ -105,6 +119,7 @@ function retornoID($con){
   
 }
 
+
 ?>
 
 <!doctype html>
@@ -134,7 +149,8 @@ function retornoID($con){
 						<!-- DADOS BASICOS -->
 						<tr>
 							<td colspan=2>
-								<center><h3> Dados Básicos </h3></center>
+								<h3> Dados Básicos </h3>
+								<hr>
 							</td>
 						</tr>
                         <tr>
@@ -153,7 +169,6 @@ function retornoID($con){
                             <td><label for="i-email">E-mail:</label></td>
                             <td><input type="text" name="email" title="E-mail" class="input"></td>
                         </tr>
-						
 						<tr>
                             <td><label for="i-estado">Estado:</label></td>
 							<td>
@@ -175,10 +190,24 @@ function retornoID($con){
 								</select>
 							</td>
 						</tr>	
-						
                         <tr>
                             <td><label for="i-foto">Foto:</label></td>
                             <td><input type="file" name="foto" title="Foto" class="input"></td>
+                        </tr>
+                        <tr>
+                            <td><br /><label for="i-area">Áreas de interesse:</label></td>
+                            <td>
+                                <ul class="area">
+                                    <li><input type="checkbox" name="area[]" value="Análise de Sistemas"><label for="area-1">Análise de Sistemas</label></li>
+                                    <li><input type="checkbox" name="area[]" value="Back-end"><label for="area-2">Back-end</label></li>
+                                    <li><input type="checkbox" name="area[]" value="Design"><label for="area-3">Design</label></li>
+                                    <li><input type="checkbox" name="area[]" value="Front-End"><label for="area-4">Front-End</label></li>
+                                    <li><input type="checkbox" name="area[]" value="Interfaces"><label for="area-5">Interfaces</label></li>
+                                    <li><input type="checkbox" name="area[]" value="Redes"><label for="area-6">Redes</label></li>
+                                    <li><input type="checkbox" name="area[]" value="Segurança"><label for="area-7">Segurança</label></li>
+                                    <li><input type="checkbox" name="area[]" value="UX"><label for="area-8">UX</label></li>
+                                </ul>
+                            </td>
                         </tr>
 						
 						<!--
@@ -186,33 +215,6 @@ function retornoID($con){
                             <td><label for="i-minicurriculo">Minicurrículo:</label></td>
 							<td><textarea name="minicurriculo" cols="25" rows="7" class="input" title="Minicurrículo"></textarea></td>
                         </tr>		--><!--
-						
-				        <tr>
-                            <td><label for="i-idioma">Idiomas:</label></td>
-                            <td>
-                                <ul class="lista-idiomas">
-								    <li><input type="checkbox" name="idioma" value="idioma-1" id="idioma-1" checked><label for="idioma-1">Português</label></li>
-                                    <li><input type="checkbox" name="idioma" value="idioma-1" id="idioma-1" ><label for="idioma-1">Inglês</label></li>
-                                    <li><input type="checkbox" name="idioma" value="idioma-1" id="idioma-1" ><label for="idioma-1">Espanhol</label></li>
-                                </ul>
-                            </td>
-                        </tr>
-						
-                        <tr>
-                            <td><label for="i-estado">Áreas de interesse:</label></td>
-                            <td>
-                                <ul class="lista-areas">
-                                    <li><input type="checkbox" name="area" value="area-1" id="area-1"><label for="area-1">Análise de Sistemas</label></li>
-                                    <li><input type="checkbox" name="area" value="area-2" id="area-2"><label for="area-2">Back-end</label></li>
-                                    <li><input type="checkbox" name="area" value="area-3" id="area-3"><label for="area-3">Design</label></li>
-                                    <li><input type="checkbox" name="area" value="area-4" id="area-4"><label for="area-4">Front-End</label></li>
-                                    <li><input type="checkbox" name="area" value="area-5" id="area-5"><label for="area-5">Interfaces</label></li>
-                                    <li><input type="checkbox" name="area" value="area-6" id="area-6"><label for="area-6">Redes</label></li>
-                                    <li><input type="checkbox" name="area" value="area-7" id="area-7"><label for="area-7">Segurança</label></li>
-                                    <li><input type="checkbox" name="area" value="area-8" id="area-8"><label for="area-8">UX</label></li>
-                                </ul>
-                            </td>
-                        </tr>
                         <tr>
                             <td><label for="i-curriculo">Senha</label></td>
                             <td><input type="password" class="input" title="Senha"></td>
@@ -223,11 +225,11 @@ function retornoID($con){
                         </tr>-->
                         <tr>
                             <td></td>
-                            <td>
+                            <td><br />
 								<input type="reset" value="Limpar">
-								<input type="submit" name="cadastrar" value="Cadastrar">
+								<input type="submit" name="cadastrar" value="Seguir com Cadastro >>">
 							</td>
-                        </tr>
+                        </tr>						
                     </table>
                 </form>
             </div>
