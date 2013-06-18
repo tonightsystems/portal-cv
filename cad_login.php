@@ -10,7 +10,7 @@ if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efe
 	cadastroLogin($con);	
 	
 }
-
+//
 // FUNCAO RESPONSAVEL POR REALIZAR O CADASTRO DO LOGIN
 
 function cadastroLogin($con){ 

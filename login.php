@@ -18,10 +18,12 @@
 			<?php include ("menu-lateral.html"); ?>
 			
             <div id="conteudo">
-                <h1>Login</h1>
-                <p>Acesse o sistema do Portal CV, cadastre seu currículo e suas áreas de interesse e em breve alguma oportunidade vai encontrar você!</p>
-                <form action="perfil.html" id="login" method="post" onsubmit="validar(event, this)">
-                    <table>
+                <center><h1>Login</h1></center><br />
+                <p>Acesse o sistema do Portal CV, cadastre seu currículo e suas áreas de interesse e em breve alguma oportunidade vai encontrar você!</p><br />
+                <form action="perfil.php" id="login" method="post" onsubmit="validar(event, this)">
+                    <table align="center">
+					
+						<!-- DADOS DE ACESSO -->
                         <tr>
                             <td><label for="i-email">E-mail</label></td>
                             <td><input type="text" name="email" id="i-email" title="E-mail" class="input"></td>
@@ -32,7 +34,10 @@
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
-                            <td><input type="submit" value="Login"></td>
+							<td>
+								<input type="reset" value="Limpar">
+								<input type="submit" name="logar" value="Logar">
+							</td>
                         </tr>
                     </table>
                 </form>
