@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-$id_candidato= $_SESSION['id_candidato'];
+
+$id_candidato= $_SESSION['id_candidato']; //recebe o campo id_candidato, da página cad_curriculo.php
 
 //echo "pagina2: ". $id_candidato; ///////////////////
 

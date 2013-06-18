@@ -7,9 +7,7 @@ require './config/conexao.php';
 
 if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efetua as ações
 
-	cadastroLogin($con);
-	retornoID($con);
-//	header("Location: cad_curriculo2.php");
+	cadastroLogin($con);	
 	
 }
 
@@ -21,7 +19,9 @@ function cadastroLogin($con){
 	$email= $_POST["email"];
 	$senha= $_POST["senha"];
 	$confirmar_senha= $_POST["confirmar_senha"];
-		
+	
+	$_SESSION['email'] = $email; //cria sessão para o campo email	
+	
 	if($senha == $confirmar_senha){
 		
 		// query que realiza a inserção dos dados na tabela login
@@ -31,6 +31,9 @@ function cadastroLogin($con){
 		if(!mysql_query($query,$con)) {
 			echo "Erro na sequencia SQL!";
 		}	
+		
+		retornoID($con);
+		header("Location: cad_curriculo.php");
 	
 	} else {
 	

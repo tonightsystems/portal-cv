@@ -2,12 +2,17 @@
 
 session_start(); // iniciar a session
 
+$id_login= $_SESSION['id_login']; //recebe o campo id_login, da página cad_login.php
+$email= $_SESSION['email']; //recebe o campo email, da página cad_login.php
+echo "id_login: ".$id_login;
+echo "<BR />email: ".$email;
+
 require './config/conexao.php';
 
 
 if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efetua as ações
 
-	cadastroCurriculo($con);
+	cadastroCurriculo($con, $id_login, $email);
 	
 /*
 	// Verifica se alguma area foi selecionada 
@@ -17,7 +22,7 @@ if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efe
             echo "A area ".$_POST["area"][$i]." foi selecionada!<br />";
         }
     } else {
-        echo "Nenhuma area foi selecionada!";
+        echo "Nenhuma área foi selecionada!";
     }	
 */
 /*
@@ -39,13 +44,13 @@ if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efe
 
 // FUNCAO RESPONSAVEL POR REALIZAR O CADASTRO DE CANDIDATOS
 
-function cadastroCurriculo($con){ 
+function cadastroCurriculo($con, $id_login, $email){ 
 		
 	// armazena os dados do formulário
 	$nome= $_POST["nome"];
 	$telefone= $_POST["telefone"];
 	$celular= $_POST["celular"];
-	$email= $_POST["email"];
+//	$email= $_POST["email"];
 	$id_estado= $_POST["estado"];
 	$foto= $_FILES['foto'];
 	$area= $_POST["area"];
@@ -54,8 +59,8 @@ function cadastroCurriculo($con){
 	uploadFoto($foto);
 		
 	// query que realiza a inserção dos dados na tabela candidato
-	$query = "INSERT INTO `candidato` (`nome` , `telefone`, `celular`, `email`, `id_estado`, `foto`, `areas_interesse`, `idioma`) 
-	VALUES ('$nome', '$telefone', '$celular', '$email', '$id_estado', '$foto', '$area', '$idioma')";
+	$query = "INSERT INTO `candidato` (`id_login`, `nome` , `telefone`, `celular`, `email`, `id_estado`, `foto`, `areas_interesse`, `idioma`) 
+	VALUES ('$id_login', '$nome', '$telefone', '$celular', '$email', '$id_estado', '$foto', '$area', '$idioma')";
 	
 	if(!mysql_query($query,$con)) {
 		echo "Erro na sequencia SQL!";
@@ -127,7 +132,7 @@ function retornoID($con){
     $id_candidato = mysql_insert_id($con);
     
     $_SESSION['id_candidato'] = $id_candidato;
-	echo "pagina 1:". $_SESSION['id_candidato']; 
+	echo "Pagina 1: ". $_SESSION['id_candidato']; 
   
 }
 
@@ -176,11 +181,11 @@ function retornoID($con){
                         <tr>
                             <td><label for="i-celular">Celular:</label></td>
                             <td><input type="text" name="celular" title="Celular" class="input"></td>
-                        </tr>
+                        </tr><!--
 						<tr>
                             <td><label for="i-email">E-mail:</label></td>
                             <td><input type="text" name="email" title="E-mail" class="input"></td>
-                        </tr>
+                        </tr>-->
 						<tr>
                             <td><label for="i-estado">Estado:</label></td>
 							<td>
@@ -236,15 +241,7 @@ function retornoID($con){
                         <tr>
                             <td><label for="i-minicurriculo">Minicurrículo:</label></td>
 							<td><textarea name="minicurriculo" cols="25" rows="7" class="input" title="Minicurrículo"></textarea></td>
-                        </tr>		--><!--
-                        <tr>
-                            <td><label for="i-curriculo">Senha</label></td>
-                            <td><input type="password" class="input" title="Senha"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="i-curriculo">Confirmar senha</label></td>
-                            <td><input type="password" class="input" title="Confirmar senha"></td>
-                        </tr>-->
+                        </tr>		-->
                         <tr>
                             <td></td>
                             <td><br />
