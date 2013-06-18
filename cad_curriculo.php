@@ -53,7 +53,7 @@ function cadastroCurriculo($con){
 		
 	uploadFoto($foto);
 		
-	// query que realiza a inserção dos dados no banco de dados na tabela candidatos
+	// query que realiza a inserção dos dados na tabela candidato
 	$query = "INSERT INTO `candidato` (`nome` , `telefone`, `celular`, `email`, `id_estado`, `foto`, `areas_interesse`, `idioma`) 
 	VALUES ('$nome', '$telefone', '$celular', '$email', '$id_estado', '$foto', '$area', '$idioma')";
 	
