@@ -20,6 +20,17 @@ if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efe
         echo "Nenhuma area foi selecionada!";
     }	
 */
+/*
+	// Verifica se algum idioma foi selecionado
+    if(isset($_POST["idioma"])) {// Faz um loop no Array de checkbox
+            
+        for($i = 0; $i < count($_POST["idioma"]); $i++) {  // A função count retorna a quantidade de checkbox selecionado
+            echo "O idioma ".$_POST["idioma"][$i]." foi selecionado!<br />";
+        }
+    } else {
+        echo "Nenhum idioma foi selecionado!";
+    }	
+*/
 	
 	retornoID($con);
 	header("Location: cad_curriculo2.php");
@@ -38,12 +49,13 @@ function cadastroCurriculo($con){
 	$id_estado= $_POST["estado"];
 	$foto= $_FILES['foto'];
 	$area= $_POST["area"];
+	$idioma= $_POST["idioma"];
 		
 	uploadFoto($foto);
 		
 	// query que realiza a inserção dos dados no banco de dados na tabela candidatos
-	$query = "INSERT INTO `candidato` (`nome` , `telefone`, `celular`, `email`, `id_estado`, `foto`, `areas_interesse`) 
-	VALUES ('$nome', '$telefone', '$celular', '$email', '$id_estado', '$foto', '$area')";
+	$query = "INSERT INTO `candidato` (`nome` , `telefone`, `celular`, `email`, `id_estado`, `foto`, `areas_interesse`, `idioma`) 
+	VALUES ('$nome', '$telefone', '$celular', '$email', '$id_estado', '$foto', '$area', '$idioma')";
 	
 	if(!mysql_query($query,$con)) {
 		echo "Erro na sequencia SQL!";
@@ -207,6 +219,16 @@ function retornoID($con){
                                     <li><input type="checkbox" name="area[]" value="Segurança"><label for="area-7">Segurança</label></li>
                                     <li><input type="checkbox" name="area[]" value="UX"><label for="area-8">UX</label></li>
                                 </ul>
+                            </td>
+                        </tr>
+						<tr>
+							<td><br /><label for="i-idioma">Idiomas:</label></td>
+							<td>
+								<ul class="idioma">
+								    <li><input type="checkbox" name="idioma[]" value="Português" checked><label for="idioma-1">Português</label></li>
+                                    <li><input type="checkbox" name="idioma[]" value="Inglês" ><label for="idioma-2">Inglês</label></li>
+                                    <li><input type="checkbox" name="idioma[]" value="Espanhol" ><label for="idioma-3">Espanhol</label></li>
+                                </ul> 
                             </td>
                         </tr>
 						
