@@ -3,16 +3,14 @@
 session_start(); // iniciar a session
 
 $id_login= $_SESSION['id_login']; //recebe o campo id_login, da página cad_login.php
-$email= $_SESSION['email']; //recebe o campo email, da página cad_login.php
 echo "id_login: ".$id_login;
-echo "<BR />email: ".$email;
 
 require './config/conexao.php';
 
 
 if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efetua as ações
 
-	cadastroCurriculo($con, $id_login, $email);
+	cadastroCurriculo($con, $id_login);
 	
 /*
 	// Verifica se alguma area foi selecionada 
@@ -44,13 +42,12 @@ if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efe
 
 // FUNCAO RESPONSAVEL POR REALIZAR O CADASTRO DE CANDIDATOS
 
-function cadastroCurriculo($con, $id_login, $email){ 
+function cadastroCurriculo($con, $id_login){ 
 		
 	// armazena os dados do formulário
 	$nome= $_POST["nome"];
 	$telefone= $_POST["telefone"];
 	$celular= $_POST["celular"];
-//	$email= $_POST["email"];
 	$id_estado= $_POST["estado"];
 	$foto= $_FILES['foto'];
 	$area= $_POST["area"];
@@ -59,8 +56,8 @@ function cadastroCurriculo($con, $id_login, $email){
 	uploadFoto($foto);
 		
 	// query que realiza a inserção dos dados na tabela candidato
-	$query = "INSERT INTO `candidato` (`id_login`, `nome` , `telefone`, `celular`, `email`, `id_estado`, `foto`, `areas_interesse`, `idioma`) 
-	VALUES ('$id_login', '$nome', '$telefone', '$celular', '$email', '$id_estado', '$foto', '$area', '$idioma')";
+	$query = "INSERT INTO `candidato` (`id_login`, `nome` , `telefone`, `celular`, `id_estado`, `foto`, `areas_interesse`, `idioma`) 
+	VALUES ('$id_login', '$nome', '$telefone', '$celular', '$id_estado', '$foto', '$area', '$idioma')";
 	
 	if(!mysql_query($query,$con)) {
 		echo "Erro na sequencia SQL!";
@@ -181,11 +178,7 @@ function retornoID($con){
                         <tr>
                             <td><label for="i-celular">Celular:</label></td>
                             <td><input type="text" name="celular" title="Celular" class="input"></td>
-                        </tr><!--
-						<tr>
-                            <td><label for="i-email">E-mail:</label></td>
-                            <td><input type="text" name="email" title="E-mail" class="input"></td>
-                        </tr>-->
+                        </tr>
 						<tr>
                             <td><label for="i-estado">Estado:</label></td>
 							<td>

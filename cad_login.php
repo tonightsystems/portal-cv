@@ -20,8 +20,6 @@ function cadastroLogin($con){
 	$senha= $_POST["senha"];
 	$confirmar_senha= $_POST["confirmar_senha"];
 	
-	$_SESSION['email'] = $email; //cria sessão para o campo email	
-	
 	if($senha == $confirmar_senha){
 		
 		// query que realiza a inserção dos dados na tabela login
