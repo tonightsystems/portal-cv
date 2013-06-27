@@ -9,7 +9,7 @@
     <div id="tudo">
         <!-- CABEÇALHO -->
         <?php include ("cabecalho.html"); ?>
-		
+	
         <!-- CONTEÚDO PRINCIPAL -->
         <div id="meio">
 		

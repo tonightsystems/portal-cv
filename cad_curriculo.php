@@ -2,15 +2,15 @@
 
 session_start(); // iniciar a session
 
-$id_login= $_SESSION['id_login']; //recebe o campo id_login, da página cad_login.php
-echo "id_login: ".$id_login;
+$id_candidato= $_SESSION['id_candidato']; //recebe o campo id_login, da página cad_login.php
+echo "id_candidato: ".$id_candidato;
 
 require './config/conexao.php';
 
 
 if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efetua as ações
 
-	cadastroCurriculo($con, $id_login);
+	cadastroCurriculo($con, $id_candidato);
 	
 /*
 	// Verifica se alguma area foi selecionada 
@@ -45,19 +45,20 @@ if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efe
 function cadastroCurriculo($con, $id_login){ 
 		
 	// armazena os dados do formulário
-	$nome= $_POST["nome"];
-	$telefone= $_POST["telefone"];
-	$celular= $_POST["celular"];
-	$id_estado= $_POST["estado"];
-	$foto= $_FILES['foto'];
-	$area= $_POST["area"];
-	$idioma= $_POST["idioma"];
+	$nome  		= $_POST["nome"];
+	$telefone 	= $_POST["telefone"];
+	$celular 	= $_POST["celular"];
+	$email 		= $_POST["email"];
+	$id_estado  = $_POST["estado"];
+	$foto 		= $_FILES['foto'];
+	$area 		= $_POST["area"];
+	$idioma 	= $_POST["idioma"];
 		
 	uploadFoto($foto);
 		
 	// query que realiza a inserção dos dados na tabela candidato
-	$query = "INSERT INTO `candidato` (`id_login`, `nome` , `telefone`, `celular`, `id_estado`, `foto`, `areas_interesse`, `idioma`) 
-	VALUES ('$id_login', '$nome', '$telefone', '$celular', '$id_estado', '$foto', '$area', '$idioma')";
+	$query = "INSERT INTO `candidato` (`id_login`, `nome` , `telefone`, `celular`,  `email`,`id_estado`, `foto`, `areas_interesse`, `idioma`) 
+	VALUES ('$id_login', '$nome', '$telefone', '$celular', '$email','$id_estado', '$foto', '$area', '$idioma')";
 	
 	if(!mysql_query($query,$con)) {
 		echo "Erro na sequencia SQL!";
@@ -179,6 +180,10 @@ function retornoID($con){
                             <td><label for="i-celular">Celular:</label></td>
                             <td><input type="text" name="celular" title="Celular" class="input"></td>
                         </tr>
+                         <tr>
+                            <td><label for="i-celular">Email:</label></td>
+                            <td><input type="text" name="email" title="Email" class="input"></td>
+                        </tr>
 						<tr>
                             <td><label for="i-estado">Estado:</label></td>
 							<td>
@@ -223,7 +228,7 @@ function retornoID($con){
 							<td><br /><label for="i-idioma">Idiomas:</label></td>
 							<td>
 								<ul class="idioma">
-								    <li><input type="checkbox" name="idioma[]" value="Português" checked><label for="idioma-1">Português</label></li>
+								    <li><input type="checkbox" name="idioma[]" value="Português" ><label for="idioma-1">Português</label></li>
                                     <li><input type="checkbox" name="idioma[]" value="Inglês" ><label for="idioma-2">Inglês</label></li>
                                     <li><input type="checkbox" name="idioma[]" value="Espanhol" ><label for="idioma-3">Espanhol</label></li>
                                 </ul> 

@@ -1,19 +1,31 @@
 <?php
+    include './config/conexao.php';
+?>
+<?php
+    session_start();
+    if(!isset($_SESSION["login"]) || !isset($_SESSION["login"])) {
 
-require './config/conexao.php';
+        header("location: login.php");
+        exit;
+    }
+?> 
+<?php
+    require './config/conexao.php';
 
-$nome= "Fulano de Tal";
-$telefone= "";
-$celular= "";
+    $nome="";
+    $telefone= "";
+    $celular= "";
+    $email= "";
 
-$query1 = "SELECT * FROM `candidato` c, `login` l
-WHERE c.id_login = l.id_login";
+    $query1 = "SELECT * FROM candidato
+    WHERE nome = '$nome'
+    AND  telefone = '$telefone'
+    AND  celular = '$celular'
+    AND  email = '$email'";
 
-$result = mysql_query($query1);
-
+    $result = mysql_query($query1);
 
 ?>
-
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -25,7 +37,7 @@ $result = mysql_query($query1);
 <body>
     <div id="tudo">
         <!-- CABEÇALHO -->
-        <?php include ("cabecalho.html"); ?>
+        <?php include ("cabecalho1.html"); ?>
 		
         <!-- CONTEÚDO PRINCIPAL -->
         <div id="meio">
@@ -35,7 +47,7 @@ $result = mysql_query($query1);
 			
             <div id="conteudo">
                 <h1>Seu Perfil</h1><br />
-                <form action="listar.html" method="post" id="cadastrar" onsubmit="validar(event, this)">
+                <form action="index.php" method="post" id="cadastrar" onsubmit="validar(event, this)">
                     <table align="center">
 					
 						<!-- DADOS BASICOS -->
@@ -56,6 +68,10 @@ $result = mysql_query($query1);
                         <tr>
                             <td><label for="i-celular">Celular:</label></td>
                             <td><input type="text" name="celular" title="Celular" class="input" value="<?php echo $celular ?>"></td>
+                        </tr>
+                         <tr>
+                            <td><label for="i-email">E-mail:</label></td>
+                            <td><input type="text" name="email" title="E-mail" class="input" value=" <?php echo $email ?>"></td>
                         </tr>
                         <tr>
                             <td><label for="i-estado">Estado:</label></td>
@@ -90,12 +106,7 @@ $result = mysql_query($query1);
                                 </ul> 
                             </td>
                         </tr>
-						
-				        <tr>
-                            <td><label for="i-email">E-mail:</label></td>
-                            <td><input type="text" name="email" title="E-mail" class="input" value="fulano@gmail.com"></td>
-                        </tr>
-                        <tr>
+						<tr>
                             <td><label for="i-curriculo">Senha</label></td>
                             <td><input type="password" class="input" title="Senha"></td>
                         </tr>
@@ -105,7 +116,7 @@ $result = mysql_query($query1);
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="submit" value="Cadastrar"></td>
+                            <td><input type="submit" value="Alterar cadastro"></td>
                         </tr>
                     </table>
                 </form>

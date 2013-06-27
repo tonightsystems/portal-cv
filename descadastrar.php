@@ -1,6 +1,3 @@
-<?php
-    include './config/conexao.php';
-?>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -21,25 +18,24 @@
 			<?php include ("menu-lateral.html"); ?>
 			
             <div id="conteudo">
-                <center><h1>Login</h1></center><br />
-                <p>Acesse o sistema do Portal CV, cadastre seu currículo e suas áreas de interesse e em breve alguma oportunidade vai encontrar você!</p><br />
-                <form action="logar.php" id="login" method="post" onsubmit="validar(event, this)">
+                <center><h1>Descadastre-se</h1></center><br /><br />
+                <form action="deletar.php" method="post" id="descadastrar" onsubmit="validar(event, this)">
                     <table align="center">
 					
 						<!-- DADOS DE ACESSO -->
+						<tr>
+                            <td><label for="i-login">Login:</label></td>
+                            <td><input type="text" name="login" title="Login" class="input"></td>
+                        </tr>			
                         <tr>
-                            <td><label for="i-login">Login</label></td>
-                            <td><input type="text" name="login" id="i-login" title="Login" class="input"></td>
+                            <td><label for="i-senha">Senha:</label></td>
+                            <td><input type="password" name="senha" title="Senha" class="input"></td>
                         </tr>
                         <tr>
-                            <td><label for="i-senha">Senha</label></td>
-                            <td><input type="password" name="senha" id="i-senha" title="Senha" class="input"></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-							<td>
+                            <td></td>
+                            <td>
 								<input type="reset" value="Limpar">
-								<input type="submit" name="logar" value="Logar">
+								<input type="submit" name="descadastrar" value="Descadastrar">
 							</td>
                         </tr>
                     </table>

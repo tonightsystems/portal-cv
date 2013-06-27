@@ -1,0 +1,20 @@
+<?php
+    include './config/conexao.php';
+?>
+
+<header id="cabecalho">
+    <!-- LOGO -->
+    <div id="logo">
+        <h1><a href="index.php" title="Página Inicial">Portal CV</a></h1>
+        <p id="subtitulo">Seu currículo no lugar certo.</p>
+    </div>
+    
+    <?php $login = $_SESSION["login"]; ?>
+    
+    <!-- MENU -->
+    <ul id="menu">
+       <li class=""><FONT FACE="Arial" SIZE="2" COLOR="red">Bem Vindo: </FONT><?php echo $login ?></a></li>
+       <li class=""><a href="logout.php">Logout</a></li>
+     
+    </ul>
+</header>

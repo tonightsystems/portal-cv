@@ -1,8 +1,6 @@
 <?php
-
-session_start(); // iniciar a session
-
-require './config/conexao.php';
+	include './config/conexao.php';
+	session_start(); // iniciar a session
 
 
 if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efetua as ações
@@ -16,15 +14,15 @@ if(isset($_POST['cadastrar'])) { // Se o usuário clicou no botão cadastrar efe
 function cadastroLogin($con){ 
 		
 	// armazena os dados do formulário
-	$email= $_POST["email"];
+	$login= $_POST["login"];
 	$senha= $_POST["senha"];
 	$confirmar_senha= $_POST["confirmar_senha"];
 	
 	if($senha == $confirmar_senha){
 		
 		// query que realiza a inserção dos dados na tabela login
-		$query = "INSERT INTO `login` (`email`, `senha`) 
-		VALUES ('$email', '$senha')";
+		$query = "INSERT INTO `candidato` (`login`, `senha`) 
+		VALUES ('$login', '$senha')";
 	
 		if(!mysql_query($query,$con)) {
 			echo "Erro na sequencia SQL!";
@@ -44,10 +42,10 @@ function cadastroLogin($con){
 
 function retornoID($con){
 
-    $id_login = mysql_insert_id($con);
+    $id_candidato = mysql_insert_id($con);
     
-    $_SESSION['id_login'] = $id_login;
-	echo "pagina Login:". $_SESSION['id_login']; 
+    $_SESSION['id_candidato'] = $id_candidato;
+	echo "pagina Login:". $_SESSION['id_candidato']; 
   
 }
 
@@ -80,8 +78,8 @@ function retornoID($con){
 					
 						<!-- DADOS DE ACESSO -->
 						<tr>
-                            <td><label for="i-email">E-mail:</label></td>
-                            <td><input type="text" name="email" title="E-mail" class="input"></td>
+                            <td><label for="i-login">Login:</label></td>
+                            <td><input type="text" name="login" title="Login" class="input"></td>
                         </tr>			
                         <tr>
                             <td><label for="i-senha">Senha:</label></td>

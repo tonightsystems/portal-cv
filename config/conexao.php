@@ -5,9 +5,9 @@ if(!$con){
 	echo("Erro na conexao com o servidor MySQL!");
 }
 
-$db_ok = mysql_select_db ("bd_portalcv", $con);
+$db_ok = mysql_select_db ("portalcv", $con);
 if(!$db_ok){
-	echo("Erro na conexao com o banco bd_portalcv!");
+	echo("Erro na conexao com o banco portalcv!");
 }
 
 ?>
