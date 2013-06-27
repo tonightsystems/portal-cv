@@ -101,8 +101,9 @@ function cadastroExperiencia($con, $id_candidato){
                         </tr>
                         <tr>
                             <td></td>
-                           	<input type="reset" value="Limpar">
-							<input type="submit" name="cadastrar" value="Cadastrar"></td>
+                            <td><input type="submit" name="cad_experiencia" value="Nova Experiência">
+                            <input type="reset" value="Limpar">
+                            <input type="submit" name="cadastrar" value="Cadastrar"></td>
                         </tr>
                     </table>
                 </form>
